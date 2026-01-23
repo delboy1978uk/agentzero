@@ -1,0 +1,19 @@
+services:
+    agent-zero:
+        image: agent0ai/agent-zero
+        env_file:
+          - .env
+        environment:
+          - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+        ports:
+            - 50080:80
+        volumes_from:
+            - app
+
+    app:
+        image: httpd:2.4.38
+        volumes:
+            - ./settings.json:/a0/tmp/settings.json
+            - ./projects:/a0/usr/projects
+        user: 1001:root
+        command: "echo true"

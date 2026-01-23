@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+stop_requested=false
+
+for arg in "$1"; do
+    case "$arg" in
+        --stop|-s|stop)
+            stop_requested=true
+            ;;
+        --help|-h)
+            echo "Usage: $0 [--stop] [other options]"
+            exit 0
+            ;;
+    esac
+done
+
+if [ "$stop_requested" = true ]; then
+    echo "Stopping agent zero"
+    docker compose down
+    exit 0
+fi
+
+echo "Starting Agent zero..."
+docker compose up $@
