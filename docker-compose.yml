@@ -1,6 +1,6 @@
 services:
     agent-zero:
-        image: agent0ai/agent-zero
+        build: ./build
         env_file:
           - .env
         environment:
@@ -9,7 +9,6 @@ services:
             - 50080:80
         volumes_from:
             - app
-
     app:
         image: httpd:2.4.38
         volumes:
