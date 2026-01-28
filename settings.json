@@ -1,7 +1,7 @@
 {
     "version": "v0.9.7-10",
     "chat_model_provider": "openrouter",
-    "chat_model_name": "mistralai/devstral-2512:free",
+    "chat_model_name": "upstage/solar-pro-3:free",
     "chat_model_api_base": "",
     "chat_model_kwargs": {
         "temperature": "0"
@@ -13,7 +13,7 @@
     "chat_model_rl_input": 0,
     "chat_model_rl_output": 0,
     "util_model_provider": "openrouter",
-    "util_model_name": "mistralai/devstral-2512:free",
+    "util_model_name": "upstage/solar-pro-3:free",
     "util_model_api_base": "",
     "util_model_ctx_length": 100000,
     "util_model_ctx_input": 0.7,
@@ -30,7 +30,7 @@
     "embed_model_rl_requests": 0,
     "embed_model_rl_input": 0,
     "browser_model_provider": "openrouter",
-    "browser_model_name": "mistralai/devstral-2512:free",
+    "browser_model_name": "upstage/solar-pro-3:free",
     "browser_model_api_base": "",
     "browser_model_vision": true,
     "browser_model_rl_requests": 0,

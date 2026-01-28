@@ -12,6 +12,7 @@ services:
     app:
         image: httpd:2.4.38
         volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
             - ./settings.json:/a0/tmp/settings.json
             - ./projects:/a0/usr/projects
         user: 1001:root
