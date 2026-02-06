@@ -6,8 +6,8 @@ RUN apt-get update
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # Set up environment variables for nvm
-ENV NVM_DIR /root/.nvm
-ENV PATH $NVM_DIR/versions/node/v24.13.0/bin:$PATH
+ENV NVM_DIR=/root/.nvm
+ENV PATH=$NVM_DIR/versions/node/v24.13.0/bin:$PATH
 
 # Load nvm and install latest LTS Node.js
 RUN . "$NVM_DIR/nvm.sh" && \
