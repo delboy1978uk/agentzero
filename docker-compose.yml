@@ -3,8 +3,6 @@ services:
         build: ./build
         env_file:
           - .env
-        environment:
-          - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
         ports:
             - 50080:80
         volumes_from:
@@ -13,6 +11,11 @@ services:
         image: httpd:2.4.38
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+            - ./a0/agents:/a0/agents
+            - ./a0/instruments:/a0/instruments
+            - ./a0/knowledge:/a0/knowledge
+            - ./a0/memory:/a0/memory
+            - ./a0/prompts:/a0/prompts
             - ./settings.json:/a0/tmp/settings.json
             - ./projects:/a0/usr/projects
         user: 1001:root
