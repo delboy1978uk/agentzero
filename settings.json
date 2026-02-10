@@ -1,11 +1,10 @@
 {
     "version": "v0.9.7-10",
     "chat_model_provider": "anthropic",
-    "chat_model_name": "anthropic/claude-haiku-4.5",
+    "chat_model_name": "claude-sonnet-4-5",
     "chat_model_api_base": "",
     "chat_model_kwargs": {
-        "temperature": "0",
-        "num_ctx": 200000
+        "temperature": "0"
     },
     "chat_model_ctx_length": 200000,
     "chat_model_ctx_history": 0.7,
