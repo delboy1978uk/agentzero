@@ -1,3 +1,16 @@
+volumes:
+    a0_agents:
+        driver: local
+    a0_instruments:
+        driver: local
+    a0_knowledge:
+        driver: local
+    a0_memory:
+        driver: local
+    a0_prompts:
+        driver: local
+    a0_skills:
+        driver: local
 services:
     agent-zero:
         build: ./build
@@ -11,12 +24,14 @@ services:
         image: httpd:2.4.38
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-            - ./a0/agents:/a0/agents
-            - ./a0/instruments:/a0/instruments
-            - ./a0/knowledge:/a0/knowledge
-            - ./a0/memory:/a0/memory
-            - ./a0/prompts:/a0/prompts
+            - a0_agents:/a0/agents
+            - a0_instruments:/a0/instruments
+            - a0_knowledge:/a0/knowledge
+            - a0_memory:/a0/memory
+            - a0_prompts:/a0/prompts
+            - a0_skills:/a0/skills
             - ./settings.json:/a0/tmp/settings.json
+            - ../:/a0/usr/projects
             - ./projects:/a0/usr/projects
         user: 1001:root
         command: "echo true"

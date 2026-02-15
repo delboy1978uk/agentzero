@@ -1,24 +1,50 @@
 #!/usr/bin/env bash
 
 stop_requested=false
+restart_requested=false
+compose_args=()
 
-for arg in "$1"; do
+for arg in "$@"; do
     case "$arg" in
         --stop|-s|stop)
             stop_requested=true
             ;;
+        --restart|-r|restart)
+            restart_requested=true
+            ;;
         --help|-h)
-            echo "Usage: $0 [--stop] [other options]"
+            echo "Usage: $0 [--stop|-s|stop] [--restart|-r|restart] [--help|-h] [docker compose up options...]"
+            echo ""
+            echo "Options:"
+            echo "  --stop, -s, stop       Stop Agent Zero (runs 'docker compose down')"
+            echo "  --restart, -r, restart Restart Agent Zero (down then up)"
+            echo "  --help, -h             Show this help"
+            echo ""
+            echo "All other arguments are passed directly to 'docker compose up' when starting or restarting."
             exit 0
+            ;;
+        *)
+            compose_args+=("$arg")
             ;;
     esac
 done
 
+if [ "$stop_requested" = true ] && [ "$restart_requested" = true ]; then
+    echo "Error: Cannot specify both --stop and --restart"
+    exit 1
+fi
+
 if [ "$stop_requested" = true ]; then
-    echo "Stopping agent zero"
+    echo "Stopping Agent Zero..."
     docker compose down
     exit 0
 fi
 
-echo "Starting Agent zero..."
-docker compose up $@
+if [ "$restart_requested" = true ]; then
+    echo "Restarting Agent Zero..."
+    docker compose down
+    docker compose up "${compose_args[@]}"
+else
+    echo "Starting Agent Zero..."
+    docker compose up "${compose_args[@]}"
+fi
