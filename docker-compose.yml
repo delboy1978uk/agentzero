@@ -31,7 +31,6 @@ services:
             - a0_prompts:/a0/prompts
             - a0_skills:/a0/skills
             - ./settings.json:/a0/tmp/settings.json
-            - ../:/a0/usr/projects
             - ./projects:/a0/usr/projects
         user: 1001:root
         command: "echo true"
